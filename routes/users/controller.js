@@ -1,3 +1,4 @@
+
 const bcrypt = require('bcryptjs');
 
 const {
@@ -30,6 +31,18 @@ module.exports = {
             console.error(error);
         }
     },
+    getAllUser: async (req, res) => {
+        try {
+            const result = await User.find()
+            res.send({
+                result
+            })
+        } catch (error) {
+            res.send(error)
+       
+        }
+    },
+  
     userLogin: async (req, res) => {
         const {
             email,
