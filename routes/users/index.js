@@ -3,10 +3,12 @@ const router = express.Router();
 
 const {
     userRegistration,
-    getAllUser
+    userLogin,
+    getAllUser,
 } = require('./controller');
 
 router.post('/', userRegistration);
-router.get('/getAllUserAdminPage', getAllUser)
+router.get('/getAllUserAdminPage', getAllUser);
+router.post('/login', userLogin);
 
 module.exports = router;
