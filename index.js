@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Routes
+app.use('/api/users', require('./routes/users'));
+
 if (db) {
     app.listen(PORT, () => {
         console.log(`Server runs on port ${PORT}`);
