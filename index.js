@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send(`Welcome to task management api`);
 });
 app.use('/api/users', require('./routes/users'));
