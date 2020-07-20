@@ -1,8 +1,14 @@
-const { User } = require('../../models');
+const {
+    User
+} = require('../../models');
 
 module.exports = {
     userRegistration: async (req, res) => {
-        const { name, email, password } = req.body;
+        const {
+            name,
+            email,
+            password
+        } = req.body;
 
         try {
             const newUser = await User.create({
@@ -19,4 +25,14 @@ module.exports = {
             console.error(error);
         }
     },
+    getAllUser: async (req, res) => {
+        try {
+            const result = await User.find()
+            res.send({
+                result
+            })
+        } catch (error) {
+            res.send(error)
+        }
+    }
 };
