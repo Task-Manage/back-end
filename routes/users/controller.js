@@ -9,7 +9,7 @@ module.exports = {
 
         try {
             const checkedUser = await User.findOne({ email });
-            console.log(password)
+            console.log(password);
             if (checkedUser) {
                 return res.send({
                     message: `Email is already registered`,
@@ -80,6 +80,16 @@ module.exports = {
             res.send(results);
         } catch (error) {
             console.error(error);
+        }
+    },
+    deleteUser: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const results = await User.findByIdAndDelete(id);
+            res.send({message:'deleted',
+            results,});
+        } catch (error) {
+            res.send(error);
         }
     },
 };
