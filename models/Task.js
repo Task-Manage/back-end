@@ -14,12 +14,6 @@ const tasksSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    reviews: {
-        type: String,
-        required: true,
-        default: 'need review',
-    },
-
     createdAt: {
         type: Date,
         default: Date.now,
