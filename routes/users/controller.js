@@ -1,4 +1,3 @@
-
 const bcrypt = require('bcryptjs');
 
 const {
@@ -7,6 +6,7 @@ const {
 const {
     createToken
 } = require('../../helpers/token');
+
 
 module.exports = {
     userRegistration: async (req, res) => {
@@ -38,9 +38,8 @@ module.exports = {
                 result
             })
         } catch (error) {
-            res.send(error)
-       
-        }
+          res.send(error)
+      }
     },
   
     userLogin: async (req, res) => {

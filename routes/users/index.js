@@ -7,6 +7,7 @@ const {
     getAllUser,
 } = require('./controller');
 
+
 router.post('/', userRegistration);
 router.get('/getAllUserAdminPage', getAllUser);
 router.post('/login', userLogin);
