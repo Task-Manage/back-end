@@ -12,7 +12,7 @@ const tasksSchema = Schema({
     },
     assignee: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'users',
     },
     createdAt: {
         type: Date,

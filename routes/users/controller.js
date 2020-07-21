@@ -69,4 +69,17 @@ module.exports = {
             res.send(`Your email is not registered`);
         }
     },
+    getAllTasksofEachUser: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const results = await User.findById(id)
+                .select('-password')
+                .populate(`tasks`);
+
+            res.send(results);
+        } catch (error) {
+            console.error(error);
+        }
+    },
 };
