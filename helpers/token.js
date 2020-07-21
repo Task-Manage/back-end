@@ -1,13 +1,11 @@
-const jwt = require('jsonwebtoken')
-const {
-    JWT_SECRET
-} = require('../config')
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../config');
 
 module.exports = {
     createToken: (userData) => {
         const token = jwt.sign(userData, JWT_SECRET, {
-            expiresIn: '5m'
-        })
+            expiresIn: '1d',
+        });
 
         return token;
     },
@@ -16,21 +14,21 @@ module.exports = {
 
         if (!bearerToken) {
             return res.send({
-                message: `There is no token`
-            })
+                message: `There is no token`,
+            });
         }
 
         try {
-            const token = bearerToken.split('')[1]
-            const decoded = jwt.verify(token, JWT_SECRET)
+            const token = bearerToken.split(' ')[1];
+            const decoded = jwt.verify(token, JWT_SECRET);
 
             if (decoded) {
-                next()
+                next();
             }
         } catch (error) {
             res.send({
-                message: error.message
-            })
+                message: error.message,
+            });
         }
-    }
-}
+    },
+};
