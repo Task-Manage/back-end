@@ -18,7 +18,7 @@ const userSchema = Schema({
         type: String,
         default: 'employee',
     },
-    tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
+    tasks: [{ type: Schema.Types.ObjectId, ref: 'tasks' }],
     createdAt: {
         type: Date,
         default: Date.now,
