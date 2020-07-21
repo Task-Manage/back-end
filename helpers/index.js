@@ -1,3 +1,4 @@
+const { hashPassword } = require('./bcrypt');
 const {
     createToken,
     verifyToken
@@ -5,5 +6,6 @@ const {
 
 module.exports = {
     createToken,
-    verifyToken
+    verifyToken,
+    hashPassword,
 }
