@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const taskSchema = mongoose.Schema({
+const tasksSchema = Schema({
     assignment: {
         type: String,
     },
@@ -10,13 +10,14 @@ const taskSchema = mongoose.Schema({
         required: true,
         default: 'start',
     },
-    inCharge: {
+    assignee: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    reviews: {
         type: String,
         required: true,
-    },
-    ID: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
+        default: 'need review',
     },
 
     createdAt: {
@@ -29,6 +30,6 @@ const taskSchema = mongoose.Schema({
     },
 });
 
-const Task = mongoose.model(`task`, taskSchema);
+const Task = mongoose.model(`tasks`, tasksSchema);
 
 module.exports = Task;
