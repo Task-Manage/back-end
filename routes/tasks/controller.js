@@ -2,13 +2,17 @@ const { Task, User } = require('../../models');
 
 module.exports = {
     createTask: async (req, res) => {
-        const { assignment, status } = req.body;
+        const { assignment, assignee } = req.body;
+
         try {
-            const result = await Task.create({
+            await Task.create({
                 assignment,
                 assignee,
             });
-            res.send(result);
+
+            res.send({
+                message: 'Task succesfully added',
+            });
         } catch (error) {
             console.log(error);
         }
