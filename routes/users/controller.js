@@ -54,6 +54,9 @@ module.exports = {
                 if (result === true) {
                     const userData = {
                         id: registeredUser._id,
+                        name: registeredUser.name,
+                        email: registeredUser.email,
+                        role: registeredUser.role,
                     };
 
                     const token = createToken(userData);
@@ -86,8 +89,7 @@ module.exports = {
         const { id } = req.params;
         try {
             const results = await User.findByIdAndDelete(id);
-            res.send({message:'deleted',
-            results,});
+            res.send({ message: 'deleted', results });
         } catch (error) {
             res.send(error);
         }
