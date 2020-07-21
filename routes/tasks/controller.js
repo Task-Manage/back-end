@@ -17,4 +17,17 @@ module.exports = {
             console.log(error);
         }
     },
+    deleteTask: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            await Task.findByIdAndDelete(id);
+
+            res.send({
+                message: `Task successfully deleted`,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    },
 };
