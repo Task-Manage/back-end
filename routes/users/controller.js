@@ -9,7 +9,7 @@ module.exports = {
 
         try {
             const checkedUser = await User.findOne({ email });
-
+            console.log(password)
             if (checkedUser) {
                 return res.send({
                     message: `Email is already registered`,

@@ -14,13 +14,19 @@ module.exports = {
         const { assignment, assignee } = req.body;
 
         try {
-            await Task.create({
+            const task = await Task.create({
                 assignment,
                 assignee,
             });
 
+            const user = await User.findById(assignee);
+            user.tasks.push(task._id);
+
+            await user.save();
+
             res.send({
                 message: 'Task succesfully added',
+                result: user,
             });
         } catch (error) {
             console.log(error);
@@ -37,6 +43,53 @@ module.exports = {
             });
         } catch (error) {
             console.error(error);
+        }
+    },
+    getAllTask: async (req,res) => {
+        try {
+            const result = await Task.find();
+            res.send(result)
+        } catch (error) {
+            res.send(error)
+        }
+    },
+
+    editAdmin: async (req, res) => {
+        const { id } = req.params;
+        const { assignment, assignee, status } = req.body;
+        try {
+            await Task.findByIdAndUpdate(id, {
+                assignment,
+                assignee,
+                status,
+            });
+            const all = await Task.find();
+
+            res.send({
+                message: 'Updated',
+                result: all,
+            });
+        } catch (error) {
+            res.send(error);
+            console.log(error);
+        }
+    },
+    editUser: async (req, res) => {
+        const { id } = req.params;
+        const { status } = req.body;
+        try {
+            await Task.findByIdAndUpdate(id, {
+                status,
+            });
+            const all = await Task.find();
+
+            res.send({
+                message: 'Updated',
+                result: all,
+            });
+        } catch (error) {
+            res.send(error);
+            console.log(error);
         }
     },
 };

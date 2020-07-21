@@ -55,7 +55,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">5</th>
+                        <th scope="row">4</th>
                         <td>Get All Tasks of Each User ( User Page)</td>
                         <td>GET</td>
                         <td>/api/users/:id/tasks</td>
@@ -64,7 +64,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">4</th>
+                        <th scope="row">5</th>
                         <td>Create Task ( Admin Page)</td>
                         <td>POST</td>
                         <td>/api/tasks</td>
@@ -83,8 +83,24 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">7</th>
-                        <td>Get all users tasks (Admin Page)</td>
+                        <th scope="row">7</th>                       
+                        <td>Edit Task from User</td>
+                        <td>PUT</td>
+                        <td>/api/tasks/editUser/:id</td>
+                        <td>{status:(start/in progress/need review/done)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Edit Task from Admin</td>
+                        <td>PUT</td>
+                        <td>/api/tasks/editAdmin:id</td>
+                        <td>
+                            {assignment:'task', assignee(id) , status:'in
+                            progress'
+                        </td>
+                    </tr>
+                    <tr>
+                         <td>Get all users tasks (Admin Page)</td>
                         <td>GET</td>
                         <td>/api/tasks</td>
                         <td>
