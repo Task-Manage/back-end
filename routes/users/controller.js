@@ -73,7 +73,9 @@ module.exports = {
         const { id } = req.params;
 
         try {
-            const results = await User.findById(id).populate('tasks');
+            const results = await User.findById(id)
+                .select('-password')
+                .populate(`tasks`);
 
             res.send(results);
         } catch (error) {
