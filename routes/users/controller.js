@@ -5,7 +5,6 @@ const {
     createToken
 } = require('../../helpers/token');
 
-
 module.exports = {
     userRegistration: async (req, res) => {
         const {
@@ -45,8 +44,9 @@ module.exports = {
                 result
             })
         } catch (error) {
-          res.send(error)
-      }
+            res.send(error)
+       
+        }
     },
   
     userLogin: async (req, res) => {

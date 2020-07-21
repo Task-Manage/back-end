@@ -1,5 +1,4 @@
 const { hashPassword } = require('./bcrypt');
-
 const {
     createToken,
     verifyToken
