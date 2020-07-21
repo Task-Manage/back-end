@@ -1,17 +1,11 @@
 const { User } = require('../../models');
 const { hashPassword } = require('../../helpers');
 const bcrypt = require('bcryptjs');
-const {
-    createToken
-} = require('../../helpers/token');
+const { createToken } = require('../../helpers/token');
 
 module.exports = {
     userRegistration: async (req, res) => {
-        const {
-            name,
-            email,
-            password
-        } = req.body;
+        const { name, email, password } = req.body;
 
         try {
             const checkedUser = await User.findOne({ email });
@@ -39,45 +33,40 @@ module.exports = {
     },
     getAllUser: async (req, res) => {
         try {
-            const result = await User.find()
+            const result = await User.find();
             res.send({
-                result
-            })
+                result,
+            });
         } catch (error) {
-            res.send(error)
-       
+            res.send(error);
         }
     },
-  
+
     userLogin: async (req, res) => {
-        const {
-            email,
-            password
-        } = req.body
+        const { email, password } = req.body;
 
         const registeredUser = await User.findOne({
-            email
-        })
+            email,
+        });
 
         if (registeredUser) {
-            bcrypt.compare(password, registeredUser.password)
-                .then((result => {
-                    if (result === true) {
-                        const userData = {
-                            id: registeredUser._id
-                        }
+            bcrypt.compare(password, registeredUser.password).then((result) => {
+                if (result === true) {
+                    const userData = {
+                        id: registeredUser._id,
+                    };
 
-                        const token = createToken(userData)
-                        res.send({
-                            message: `Login Successfull`,
-                            token
-                        })
-                    } else {
-                        return res.send(`Your email or password is wrong`)
-                    }
-                }))
+                    const token = createToken(userData);
+                    res.send({
+                        message: `Login Successfull`,
+                        token,
+                    });
+                } else {
+                    return res.send(`Your email or password is wrong`);
+                }
+            });
         } else {
-            res.send(`Your email is not registered`)
+            res.send(`Your email is not registered`);
         }
-    }
+    },
 };
