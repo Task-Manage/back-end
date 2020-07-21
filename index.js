@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
     res.render('pages/home');
 });
 app.use('/api/users', require('./routes/users'));
+app.use('/api/task', require('./routes/task'));
 
 if (db) {
     app.listen(PORT, () => {
