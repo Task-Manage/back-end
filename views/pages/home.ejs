@@ -4,31 +4,102 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Task Management</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
     </head>
     <body>
-        <h1>Task Management API</h1>
+        <div class="container">
+            <h1>Task Management API</h1>
 
-        <p>Di bawah ini adalah list endpoint yang bisa kalian akses</p>
-        <table>
-            <tr>
-                <th>Tujuan</th>
-                <th>Method</th>
-                <th>Route</th>
-            </tr>
-            <tr>
-                <td>Registrasi</td>
-                <td>POST</td>
-                <td>/api/users</td>
-            </tr>
-            <tr>
-                <td>Get All User Admin Page</td>
-                <td>GET</td>
-                <td>/api/users/getAllUserAdminPage</td>
+            <p>Di bawah ini adalah list endpoint yang bisa kalian akses</p>
 
-                <td>Login</td>
-                <td>POST</td>
-                <td>/api/users/login</td>
-            </tr>
-        </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tujuan</th>
+                        <th scope="col">Method</th>
+                        <th scope="col">Route</th>
+                        <th scope="col">Req format example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Registrasi (User Page)</td>
+                        <td>POST</td>
+                        <td>/api/users</td>
+                        <td>
+                            {name: "sarah", email: "sarah@gmail.com", password:
+                            "12345678"}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Get All Users (Admin Page)</td>
+                        <td>GET</td>
+                        <td>/api/users/getAllUserAdminPage</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Login (User and Admin Page)</td>
+                        <td>POST</td>
+                        <td>/api/users/login</td>
+                        <td>
+                            {email: "sarah@gmail.com", password: "12345678"}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Get All Tasks of Each User ( User Page)</td>
+                        <td>GET</td>
+                        <td>/api/users/:id/tasks</td>
+                        <td>
+                            /api/users/123456/tasks
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Create Task ( Admin Page)</td>
+                        <td>POST</td>
+                        <td>/api/tasks</td>
+                        <td>
+                            {assignment: 'Buat proposal', assignee:
+                            '5f1589ddb81f2a37dc6b2df7'}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Delete Task ( Admin Page)</td>
+                        <td>DELETE</td>
+                        <td>/api/tasks/:id</td>
+                        <td>
+                            /api/task/12345678
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"
+    ></script>
 </html>
