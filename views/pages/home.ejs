@@ -21,13 +21,21 @@
                 <td>/api/users</td>
             </tr>
             <tr>
-                <td>Get All User Admin Page</td>
+                <td>Edit Task from User</td>
+                <td>PUT</td>
+                <td>/api/tasks/editUser/:id</td>
+                <td>{status:(start/in progress/need review/done)</td>
+            </tr>
+            <tr>
+                <td>Edit Task from Admin</td>
+                <td>PUT</td>
+                <td>/api/tasks/editAdmin:id</td>
+                <td>{assignment:'task', assignee(id) , status:'in progress'</td>
+            </tr>
+            <tr>
+                <td>getAllTask from All User(optional)</td>
                 <td>GET</td>
-                <td>/api/users/getAllUserAdminPage</td>
-
-                <td>Login</td>
-                <td>POST</td>
-                <td>/api/users/login</td>
+                <td>/api/tasks/all</td>
             </tr>
         </table>
     </body>
