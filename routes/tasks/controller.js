@@ -45,29 +45,26 @@ module.exports = {
             console.error(error);
         }
     },
-    getAllTask: async (req,res) => {
+    getAllTask: async (req, res) => {
         try {
             const result = await Task.find();
-            res.send(result)
+            res.send(result);
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     },
 
     editAdmin: async (req, res) => {
         const { id } = req.params;
-        const { assignment, assignee, status } = req.body;
+        const { assignment, status } = req.body;
         try {
             await Task.findByIdAndUpdate(id, {
                 assignment,
-                assignee,
                 status,
             });
-            const all = await Task.find();
 
             res.send({
-                message: 'Updated',
-                result: all,
+                message: 'task Succesfully updated',
             });
         } catch (error) {
             res.send(error);
