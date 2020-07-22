@@ -63,6 +63,7 @@ module.exports = {
                     res.send({
                         message: `Login Successfull`,
                         token,
+                        userData,
                         role: userData.role,
                     });
                 } else {
