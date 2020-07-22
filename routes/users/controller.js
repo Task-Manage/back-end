@@ -63,6 +63,7 @@ module.exports = {
                     res.send({
                         message: `Login Successfull`,
                         token,
+                        userData,
                     });
                 } else {
                     return res.send(`Your email or password is wrong`);
