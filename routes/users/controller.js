@@ -33,7 +33,7 @@ module.exports = {
     },
     getAllUser: async (req, res) => {
         try {
-            const result = await User.find();
+            const result = await User.find().select('-password');
             res.send({
                 result,
             });
