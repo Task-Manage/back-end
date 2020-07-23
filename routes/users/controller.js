@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { User, Task } = require('../../models');
 const { hashPassword } = require('../../helpers');
 const bcrypt = require('bcryptjs');
 const { createToken } = require('../../helpers/token');
@@ -89,8 +89,10 @@ module.exports = {
     deleteUser: async (req, res) => {
         const { id } = req.params;
         try {
-            const results = await User.findByIdAndDelete(id);
-            res.send({ message: 'deleted', results });
+            await Task.deleteMany({ assignee: id });
+            await User.findByIdAndDelete(id);
+
+            res.send({ message: 'user deleted' });
         } catch (error) {
             res.send(error);
         }
