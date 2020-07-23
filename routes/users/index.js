@@ -9,6 +9,7 @@ const {
     getAllTasksofEachUser,
     deleteUser,
     findBySearch,
+    findBySearchEachUser,
 } = require('./controller');
 
 router.post('/', userRegistration);
@@ -17,5 +18,6 @@ router.post('/login', userLogin);
 router.get('/:id/tasks', verifyToken, getAllTasksofEachUser);
 router.delete('/:id', verifyToken, deleteUser);
 router.get('/search/', verifyToken, findBySearch);
+router.get('/search/:id/', verifyToken, findBySearchEachUser);
 
 module.exports = router;
