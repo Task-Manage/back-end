@@ -89,4 +89,18 @@ module.exports = {
             console.log(error);
         }
     },
+    findBySearch: async (req, res) => {
+        const task = req.query.task;
+        try {
+            const result = await Task.find({
+                assignment: {
+                    $regex: task,
+                    $options: 'i',
+                },
+            });
+            res.send(result);
+        } catch (error) {
+            res.send(error);
+        }
+    },
 };
