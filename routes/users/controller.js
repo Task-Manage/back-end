@@ -112,4 +112,27 @@ module.exports = {
             res.send(error);
         }
     },
+    findBySearchEachUser: async (req, res) => {
+        const id = req.params.id;
+        const task = req.query.task;
+        try {
+            const result = await User.findById(id).populate({
+                path: 'tasks',
+                match: {
+                    $or: [
+                        {
+                            assignment: {
+                                $regex: task,
+                                $options: 'i',
+                            },
+                        },
+                    ],
+                },
+            });
+
+            res.send(result);
+        } catch (error) {
+            res.send(error);
+        }
+    },
 };
