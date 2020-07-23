@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { User, Task } = require('../../models');
 const { hashPassword } = require('../../helpers');
 const bcrypt = require('bcryptjs');
 const { createToken } = require('../../helpers/token');
@@ -9,7 +9,7 @@ module.exports = {
 
         try {
             const checkedUser = await User.findOne({ email });
-            console.log(password);
+
             if (checkedUser) {
                 return res.send({
                     message: `Email is already registered`,
@@ -33,7 +33,7 @@ module.exports = {
     },
     getAllUser: async (req, res) => {
         try {
-            const result = await User.find();
+            const result = await User.find().select('-password');
             res.send({
                 result,
             });
@@ -64,7 +64,6 @@ module.exports = {
                         message: `Login Successfull`,
                         token,
                         userData,
-                        role: userData.role,
                     });
                 } else {
                     return res.send(`Your email or password is wrong`);
@@ -90,8 +89,10 @@ module.exports = {
     deleteUser: async (req, res) => {
         const { id } = req.params;
         try {
-            const results = await User.findByIdAndDelete(id);
-            res.send({ message: 'deleted', results });
+            await Task.deleteMany({ assignee: id });
+            await User.findByIdAndDelete(id);
+
+            res.send({ message: 'user deleted' });
         } catch (error) {
             res.send(error);
         }
