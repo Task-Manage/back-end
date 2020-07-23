@@ -97,4 +97,19 @@ module.exports = {
             res.send(error);
         }
     },
+    findBySearch: async (req, res) => {
+        const user = req.query.user;
+        try {
+            const result = await User.find({
+                name: {
+                    $regex: user,
+                    $options: 'i',
+                },
+            });
+
+            res.send(result);
+        } catch (error) {
+            res.send(error);
+        }
+    },
 };

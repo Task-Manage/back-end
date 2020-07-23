@@ -8,6 +8,7 @@ const {
     getAllUser,
     getAllTasksofEachUser,
     deleteUser,
+    findBySearch,
 } = require('./controller');
 
 router.post('/', userRegistration);
@@ -15,5 +16,6 @@ router.get('/getAllUserAdminPage', verifyToken, getAllUser);
 router.post('/login', userLogin);
 router.get('/:id/tasks', verifyToken, getAllTasksofEachUser);
 router.delete('/:id', verifyToken, deleteUser);
+router.get('/search/', verifyToken, findBySearch);
 
 module.exports = router;
