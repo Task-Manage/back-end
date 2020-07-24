@@ -97,7 +97,8 @@ module.exports = {
                     $regex: task,
                     $options: 'i',
                 },
-            });
+            }).populate('assignee', 'name');
+
             res.send(result);
         } catch (error) {
             res.send(error);
